@@ -1,7 +1,7 @@
 
 provider "google" {
-  region                  = "us-central1"
- #  profile                 = "profile_name"
+  region                  = var.region
+  project                 = var.project
 }
 
 
