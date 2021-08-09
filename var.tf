@@ -1,3 +1,11 @@
+variable "region" {
+  default = ""
+}
+
+variable "project" {
+  default = ""
+}
+
 variable "source_object" {
   default = ""
 }
