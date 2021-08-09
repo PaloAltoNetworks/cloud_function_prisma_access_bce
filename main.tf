@@ -10,8 +10,8 @@ resource "random_id" "token" {
 }
 
 resource "google_cloudfunctions_function" "function" {
-  name        = "daniel-test"
-  description = "Terraform_Deploy"
+  name        = "update_prisma_access_ip_list"  ### please update this name you want ###
+  description = "cloud function to update access leve ip list"  ### please update this with your description ###  
   runtime     = "python39"
 
   available_memory_mb   = 128
