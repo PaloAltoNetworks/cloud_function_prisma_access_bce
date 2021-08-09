@@ -1,4 +1,5 @@
-# cloud_function_prisma_access_bce
+# The Cloud Function to auto sync the Prisma Access Node IP List with BeyondCorp Access Level
+
 1. Clone this repo to your local machine or Google Cloud Shell.
 2. Use gcloud config list to ensure you have login with your Google Account
 3. Type "gcloud auth application-default login" to let your local application to temporarily use your own user credentials for API access. Or you can use "gcloud auth application-default login --client-id-file=clientid.json" to login by passing in a file containing your own client id
