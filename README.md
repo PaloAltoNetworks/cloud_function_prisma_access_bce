@@ -11,25 +11,19 @@
        
       access_level_id: prisma_access_address
    
-   4.2 Go to Google Cloud Console -> IAM & Admin -> Service Accounts -> Create a new Service Account (no permisson or role needed). Create an Access Key of the Service Account, and download the JSON file. Open the JSON file and copy the content into the var.tf variable "cred_json", like below:
-variable "cred_json" {
-  description = "The cred_json for the Google Admin Site API call"
-  default = <<-EOF
-  {
-  "type": "service_account",
-  "project_id": "xxxxxxxx",
-  "private_key_id": "290bf6bfxxxxxxxxxx9f1ae",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuQIBADANBgkqhkiG9w0BAQEFAASCBKMwggSfAgEAAoIBAQC9eiVNw2R5bZlR\nx/MSOehaVqp4moYxP6Xs5GsAfrvDRUxImmoj0ey0EEH6I3Hjmi2TEXjALYkRZuja\nw/QZlfoYk59zCnVjFyWth8txXAmz65jnoD7cGZrO6JRGY+8NWnCpg+o/FzQ8IkeX\nqxxxxxxxxWjfC7w==\n-----END PRIVATE KEY-----\n",
-  "client_email": "prisma-bce-function@funxxxxxx.iam.gserviceaccount.com",
-  "client_id": "1059xxxxxxxxx235",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/prisma-bce-function%40funxxxxx.iam.gserviceaccount.com"
- }
-
-  EOF
-}
+   4.2 Go to Google Cloud Console -> IAM & Admin -> Service Accounts -> Create a new Service Account (no permisson or role needed), copy the Unique ID, you will needed this later. Create an Access Key of the Service Account, and download the JSON file. Open the JSON file and copy the content into the var.tf variable "cred_json", like below:
+![image](https://user-images.githubusercontent.com/52453932/128848694-52519e0c-7bc0-4a25-bdfd-c8648ec76b09.png)
+       Now you needed to go to Google Admin Site to grant this service account for the Google Admin API Call scope. 
+       Go to Google Admin (https://admin.google.com/), login with your administrator account. Go to Security -> API Controls -> Add new client by click Add New.
+       Import the Unique ID you copied previously, and add the OAuth scope: https://www.googleapis.com/auth/cloud-platform, like below:
+       ![image](https://user-images.githubusercontent.com/52453932/128849799-745af711-9397-4ac3-8b24-f2d0ea724c3b.png)
+       
+   4.3 Update the variable: source_bucket to be the bucket you put the function-source.zip file, and update the variable: source_object to be the file name (function-source.zip).
+   
+   4.4 Update the Variable: prisma_api_key. You can get this through Palo Alto Networks Panorama Console: Panorama -> Cloud Service -> Configuration, click "Generate API key". 
+   
+   4.5 Update other normal variable accordingly to the descriptions. 
+   
    
 5. Run "terraform init"
 6. Run "terraform plan"
@@ -37,4 +31,4 @@ variable "cred_json" {
 8. Run "terraform deploy"
 9. Click the Output URL after the deployment finished, it will auto-added a random token id for authentication for the Cloud Function call
 10. If the feedback is "Successful", means you have deployed the Cloud Function successfully, and tested good.
-11. Copy and paste the Output URL into Palo Alto Networks Panorama for the Primsa Access IP change auto notification and automate the Google BeyondCorp access level update.
+11. Copy and paste the Output URL into Palo Alto Networks Panorama for the Primsa Access IP change auto notification and automate the Google BeyondCorp access level update. You can do this through Palo Alto Networks Panorama Console: Panorama -> Cloud Service -> Configuration, click "IP Change Event Notification URL"
