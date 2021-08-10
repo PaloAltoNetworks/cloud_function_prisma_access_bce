@@ -16,7 +16,9 @@
        Now you needed to go to Google Admin Site to grant this service account for the Google Admin API Call scope. 
        Go to Google Admin (https://admin.google.com/), login with your administrator account. Go to Security -> API Controls -> Add new client by click Add New.
        Import the Unique ID you copied previously, and add the OAuth scope: https://www.googleapis.com/auth/cloud-platform, like below:
-       ![image](https://user-images.githubusercontent.com/52453932/128849799-745af711-9397-4ac3-8b24-f2d0ea724c3b.png)
+       ![image](https://user-images.githubusercontent.com/52453932/128851617-99584c7d-8428-4272-9b29-87f81fc0bcbe.png)
+
+
        
    4.3 Update the variable: source_bucket to be the bucket you put the function-source.zip file, and update the variable: source_object to be the file name (function-source.zip).
    
