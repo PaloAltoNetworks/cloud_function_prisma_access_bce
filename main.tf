@@ -18,7 +18,7 @@ resource "google_cloudfunctions_function" "function" {
   source_archive_bucket = var.source_bucket
   source_archive_object = var.source_object
   trigger_http          = true
-  entry_point           = "hello_world"
+  entry_point           = "prisma_bce"
   environment_variables = {
     PA_API_KEY = var.prisma_api_key
     EMAIL = var.email

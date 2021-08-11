@@ -6,6 +6,10 @@ variable "project" {
   default = ""
 }
 
+variable "source_bucket" {
+  default = ""
+}
+
 variable "source_object" {
   default = ""
 }
