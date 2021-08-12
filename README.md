@@ -1,12 +1,20 @@
 # The Cloud Function to auto sync the Prisma Access Node IP List with BeyondCorp Access Level
  -- This is developed by Palo Alto Networks GCP Techinical Engagement Team
+ 
+## Prerequisites
+1. Terraform v1.0.4
+2. Prisma Access v2.0 +
+3. Google BeyondCorp
+4. Google Admin Web access
+
+## Deployment Guide
 1. Clone this repo to your local machine or Google Cloud Shell.
 2. Use gcloud config list to ensure you have login with your Google Account
 3. Type "gcloud auth application-default login" to let your local application to temporarily use your own user credentials for API access. Or you can use "gcloud auth application-default login --client-id-file=clientid.json" to login by passing in a file containing your own client id
 4. Create or use your existing Google Cloud Storage Bucket, and upload the function-source.zip file to the bucket, ensure the credential you provided in Step 3 have the read authority.
 5. Update the variables in the var.tf
 
-   5.1 Go to Google Cloud Console -> Security -> Access Context Manager, for example, see below:
+   5.1 Go to Google Cloud Console -> Security -> Access Context Manager, if you don't have an Access Level yet, please create one. For example, see below:
        ![image](https://user-images.githubusercontent.com/52453932/128668202-5e459a51-7921-4730-9327-72a7f137d8ca.png)
        access_policy_id is: 515250846142
        
