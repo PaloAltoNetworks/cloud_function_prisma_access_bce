@@ -1,5 +1,5 @@
 # The Cloud Function to auto sync the Prisma Access Node IP List with BeyondCorp Access Level
- -- This is developed by Palo Alto Networks GCP Techinical Engagement Team
+                 -- This is developed by Palo Alto Networks GCP Techinical Engagement Team
  
 ## Prerequisites
 1. Terraform v1.0.4
